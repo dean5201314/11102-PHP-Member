@@ -1,6 +1,5 @@
 <?php
-// include_once "../include/connect.php";
-include_once "../include/db.php";
+include_once "../include/connect.php";
 
 $acc=htmlspecialchars(trim($_POST['acc']));
 
@@ -9,6 +8,11 @@ $acc=htmlspecialchars(trim($_POST['acc']));
 
 $pdo->exec($sql); */
 
-$User->save($_POST);
+insert("users",['acc'=>"{$acc}",
+                 'pw'=>"{$_POST['pw']}",
+                 'name'=>"{$_POST['name']}",
+                 'email'=>"{$_POST['email']}",
+                 'address'=>"{$_POST['address']}"]);
+
 
 header("Location:../index.php");
